@@ -13,6 +13,7 @@ public:
     Sphere(const Vector3& center, float radius);
     Vector3 center() { return m_center;};
     float radius() { return m_radius;};
+    void set_center(const Vector3& center) {m_center = center;};
     bool hit(const Ray& ray, double t_min, double t_max, HitRecord& rec) const override;
 };
 

@@ -16,6 +16,13 @@ Vector3::Vector3(double x, double y, double z)
     this->z = z;
 }
 
+Vector3::Vector3(int x, int y, int z)
+{
+    this->x = (double)x;
+    this->y = (double)y;
+    this->z = (double)z;
+}
+
 Vector3 Vector3::normalize()
 {
     float length = static_cast<float>(sqrt(x*x + y*y + z*z));
@@ -54,7 +61,13 @@ double dot(const Vector3 &lhs, const Vector3 &rhs)
 {
     return (lhs.x * rhs.x) + (lhs.y * rhs.y) + (lhs.z * rhs.z);
 }
-
+Vector3 cross(const Vector3& a, const Vector3& b) {
+    return Vector3(
+        a.y * b.z - a.z * b.y,
+        a.z * b.x - a.x * b.z,
+        a.x * b.y - a.y * b.x
+    );
+}
 Vector3 operator/(const Vector3& lhs, double t)
 {
     return Vector3(lhs.x / t, lhs.y / t, lhs.z / t);

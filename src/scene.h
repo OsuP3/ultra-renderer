@@ -14,13 +14,14 @@ public:
     bool hit(const Ray& ray, double t_min, double t_max, HitRecord& rec) const override
     {
         bool hit_something = false;
+        double closest_so_far = t_max;
 
         for (auto obj : this->m_scene)
         {
-            if (obj->hit(ray, t_min, t_max, rec))
+            if (obj->hit(ray, t_min, closest_so_far, rec))
             {
                 hit_something = true;
-                return hit_something;
+                closest_so_far = rec.t;  // only accept closer hits
             }
         }
         return hit_something;

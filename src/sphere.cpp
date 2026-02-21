@@ -35,17 +35,11 @@ bool Sphere::hit(const Ray& ray, double t_min, double t_max, HitRecord& rec) con
     rec.t = t;
     rec.point = ray.at(t);
     rec.normal = (rec.point - this->m_center).normalize();
+    
+    // Diffuse shading
+    Vector3 light_dir = Vector3(1, 1, -1).normalize();
+    double diffuse = 0.3 + 0.7 * fmax(0.0, dot(rec.normal, light_dir));  // brighter ambient
+    rec.color = diffuse * Vector3(0.984, 0.953, 0.286); 
 
     return true;
 }
-
-// bool hit_sphere(const Sphere& sphere, const Ray ray, double& t)
-// {
-//     Vector3 oc = (ray.origin() - sphere.center);
-//     Vector3 D = ray.direction();
-//     double a = dot(ray.direction(), ray.direction());
-//     double b = 2.0f * dot(ray.direction(), oc);
-//     double c = dot(oc, oc) - (sphere.radius * sphere.radius);
-
-//     return t > ((-b + sqrt(b*b - 4*a*c))/(2*a));
-// }

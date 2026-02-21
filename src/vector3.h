@@ -20,6 +20,7 @@ Vector3 operator-(const Vector3& a, const Vector3& b);
 Vector3 operator*(const Vector3& v, double t);
 Vector3 operator*(double t, const Vector3& v);
 double dot(const Vector3& a, const Vector3& b);
+Vector3 cross(const Vector3& a, const Vector3& b);
 Vector3 operator/(const Vector3& v, double t);
 
 #endif

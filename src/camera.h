@@ -29,6 +29,18 @@ public:
         this->m_lower_left_corner = origin - m_horizontal/2.0 - m_vertical/2.0 - Vector3(0.0, 0.0, focal_length);
     }
 
+    void set_origin(const Vector3 &origin)
+    {
+        this->m_origin = origin;
+        this->m_horizontal = Vector3(m_viewport_width, 0.0, 0.0);
+        this->m_vertical = Vector3(0.0, m_viewport_height, 0.0);
+        this->m_lower_left_corner = origin - m_horizontal/2.0 - m_vertical/2.0 - Vector3(0.0, 0.0, m_focal_length);
+    
+    }
+    Vector3 origin()
+    {
+        return m_origin;
+    }
     Vector3 direction(double u, double v)
     {
         return m_lower_left_corner + u*m_horizontal + v*m_vertical - m_origin;

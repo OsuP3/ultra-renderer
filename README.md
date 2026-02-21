@@ -1,1 +1,1 @@
-![Ball bounce animation](output.gif)
+![Ball bounce animation](demo.gif)
